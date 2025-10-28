@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 Surpresa pra Você 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Feliz Aniversário, meu amor 💞</h1>
+    <p class="frase">Você é o motivo do meu sorriso todos os dias ❤️</p>
+
+    <div class="album">
+      <img id="foto" src="C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\IMG-20250914-WA0024(1).jpg" alt="Nosso momento" onclick="mudarFoto()">
+      <p class="legenda">Clique na foto para ver mais momentos nossos 💌</p>
+    </div>
+
+    <section class="momentos">
+      <h2>Nossos Momentos ✨</h2>
+      <div class="galeria">
+        <img src="C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\IMG-20250914-WA0013.jpg" alt="Momento 1">
+        <img src="C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\IMG-20250914-WA0019.jpg" alt="Momento 2">
+        <img src="C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\WhatsApp Image 2025-10-28 at 20.10.24.jpeg" alt="Momento 3">
+      </div>
+    </section>
+
+    <div class="mensagens">
+      <p>💗 "Te amar é fácil, porque você é tudo o que eu sempre quis."</p>
+      <p>🌹 "Com você, descobri que o amor verdadeiro existe."</p>
+      <p>💞 "Meu coração é seu, hoje e sempre."</p>
+    </div>
+
+    <!-- 💌 BLOCO DA CARTA -->
+    <section class="carta">
+      <h2>Escrevi algo pra você 💌</h2>
+      <textarea id="textoCarta" placeholder="Escreva aqui sua mensagem para ela..."></textarea>
+      <button onclick="mostrarCarta()">Mostrar minha mensagem 💕</button>
+
+      <div id="mensagemMostrada" class="mensagemMostrada"></div>
+    </section>
+
+    <!-- 🎥 BLOCO DO VÍDEO -->
+    <section class="video-bloco">
+      <h2>Nosso vídeo especial 🎬💞</h2>
+      <p class="legenda">Clique no coração abaixo para começar o nosso momento 💘</p>
+
+      <div class="botao-coracao" onclick="tocarVideo()">
+        ❤️
+      </div>
+
+      <div class="video-container" id="videoContainer">
+        <video id="videoAmor" controls>
+          <source src="C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\VID_20250905_094533.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos.
+        </video>
+      </div>
+
+      <div id="mensagemFinal" class="mensagemFinal">
+        <p>💞 Você é o amor da minha vida, e cada segundo ao seu lado é o meu momento favorito. 💞</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Álbum de fotos
+    const fotos = [
+      "C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\IMG-20250914-WA0024(1).jpg",
+      "C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\.trashed-1762998290-IMG_20250813_102319.jpg",
+      "C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\IMG_20251006_204904_147.webp",
+      "C:\Users\Nicolas\OneDrive\Desktop\Eu te amo\VIDINHA\WhatsApp Image 2025-10-28 at 19.33.36 (2).jpeg"
+    ];
+    let i = 0;
+    function mudarFoto() {
+      i = (i + 1) % fotos.length;
+      document.getElementById("foto").src = fotos[i];
+    }
+
+    // Carta romântica
+    function mostrarCarta() {
+      const texto = document.getElementById("textoCarta").value;
+      const mensagemDiv = document.getElementById("mensagemMostrada");
+
+      if (texto.trim() === "") {
+        mensagemDiv.innerHTML = "";
+        mensagemDiv.classList.remove("ativo");
+        return;
+      }
+
+      mensagemDiv.innerHTML = `<p>${texto}</p>`;
+      mensagemDiv.classList.add("ativo");
+    }
+
+    // Coração e vídeo final
+    function tocarVideo() {
+      const video = document.getElementById("videoAmor");
+      const mensagem = document.getElementById("mensagemFinal");
+      const container = document.getElementById("videoContainer");
+
+      container.classList.add("ativo");
+      mensagem.classList.add("mostrar");
+
+      video.play();
+      video.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  </script>
+</body>
+</html>
